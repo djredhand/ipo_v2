@@ -117,12 +117,14 @@ var magic_jscript = {
   _pos: '',
 
   initialize_tab: function(_tabID){
+    magic_jscript._pos = $($('ul.ipv2 li')[_tabID]).position().left
     var tabs = $('ul.media-tabs li');
     $($('ul.media-tabs li')[_tabID])
       .children().children().trigger('click');
     $('#ipv_arrow').css({
-      marginLeft: $($('ul.ipv2 li')[_tabID]).position().left + 20
+      marginLeft: magic_jscript._pos + 20
     })
+    
   },
   tab_hover: function(){
 

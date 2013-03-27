@@ -28,7 +28,7 @@ var magic_jscript = {
     var tabs = $('ul.magic-tabs li');
     $('.magic-pane').css({display:'none'});
     $($('.magic-pane')[_tabID]).css({display:'block'})
-    tabs.addClass('ipo_v2_active');
+    $($('ul.magic-tabs li')[_tabID]).addClass('ipo_v2_active');
     $($('ul.magic-tabs li')[_tabID])
       .children().trigger('click');
     $('#ipv_arrow').css({

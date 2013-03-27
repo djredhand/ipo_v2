@@ -34,7 +34,8 @@ var magic_jscript = {
     $('#ipv_arrow').css({
       marginLeft: magic_jscript._pos + 20
     })
-    
+    $($($('.magic-pane')[_tabID]).children('.media-tabs')
+      .children().children('a')[0]).trigger('click')
   },
   tab_hover: function(){
     var lpos;
@@ -56,7 +57,10 @@ var magic_jscript = {
   },
   set_tab:function(){
      $('ul.ipv2 li').click(function(){
-      show_index = $(this).index()
+      show_index = $(this).index();
+      $($($('.magic-pane')[show_index])
+        .children('.media-tabs').children()
+        .children('a')[0]).trigger('click')
       $('.magic-pane').css({display:'none'});
       $($('.magic-pane')[show_index]).css({display:'block'})
         magic_jscript._pos = $(this).position().left;

@@ -5,13 +5,68 @@
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
 </head>
+<style type="text/css">
+.media-tabs-wrap.ipv2{
+  width: 556px;
+}
+.ipv2 ul{
+  list-style: none;
+  background:url('images/dotted_line.png');
+  background-repeat:no-repeat;
+  background-position:bottom; 
+  margin: 0;
+  padding: 0 0 20px 0;
+
+}
+.ipv2 ul li{
+  display: inline-block;
+  width: 126px;
+  height:123px;
+  padding: 0 13px 0 0;
+}
+.ipv2 ul li a{ 
+  color: #fff;
+text-decoration: none;
+font-size: 36px;
+line-height: 30px;
+font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.ipv2 ul li a span{
+  padding: 10px;
+}
+#ipv_arrow{
+  margin:-10px 0 0 35px;
+}
+.ipv2 ul li.ipv2_tab1{
+  background: url('images/tab1.png') no-repeat;
+
+}
+.ipv2 ul li.ipv2_tab1 a{
+  color:#a32020;
+}
+.ipv2 ul li.ipv2_tab2{
+  background: url('images/tab2.png') no-repeat;
+}
+.ipv2 ul li.ipv2_tab3{
+  background: url('images/tab3.png') no-repeat;
+}
+.ipv2 ul li.ipv2_tab4{
+  background: url('images/tab4.png') no-repeat;
+  padding: 0px !important;
+}
+.ipv2_tab_wrap{
+  margin: 4px 0 0 19px;
+}
+</style>
 <body>
-  <div class="media-tabs-wrap">
-   <ul class="media-tabs">
-     <li><a href="#tab-1">Tab title 1</a></li>
-     <li><a href="#tab-2">Tab title 2</a></li>
-     <li><a href="#tab-3">Tab title 3</a></li>
+  <div class="media-tabs-wrap ipv2">
+   <ul class="media-tabs ipv2">
+     <li class="ipv2_tab1"><div class="ipv2_tab_wrap"><a href="#tab-1">Tab title 1</a></div></li>
+     <li class="ipv2_tab2"><div class="ipv2_tab_wrap"><a href="#tab-2">Tab title 2</a></div></li>
+     <li class="ipv2_tab3"><div class="ipv2_tab_wrap"><a href="#tab-3">Tab title 3</a></div></li>
+     <li class="ipv2_tab4"><div class="ipv2_tab_wrap"><a href="#tab-4">Tab title 4</a></div></li>
    </ul>
+   <div id="ipv_arrow"><img src="images/tab_arrow.png"/></div>
    <div id="tab-1" class="media-pane">
      <p><strong>Content pane 1</strong></p>
      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut orci metus, a pulvinar neque. Ut ut orci risus, at feugiat sapien. Duis aliquet, nisi at scelerisque rhoncus, ipsum libero eleifend est, id posuere neque nibh id augue. Sed ut nisl erat, ac vehicula elit.</p>
@@ -24,35 +79,45 @@
      <p><strong>Content pane 3</strong></p>
      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu placerat erat. Sed scelerisque leo ut dui porttitor ac ultrices nibh pharetra.</p>
    </div>
+   <div id="tab-4" class="media-pane">
+     <p><strong>Content pane 4</strong></p>
+     <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu placerat erat. Sed scelerisque leo ut dui porttitor ac ultrices nibh pharetra.</p>
+   </div>
   </div>
 
 
-  <script> 
-  <!-- 
- jQuery(document).ready(function($) {
+<script> 
+<!-- 
+jQuery(document).ready(function($) {
 
+
+  jQuery(".media-tabs-wrap").tabs();
   
-    jQuery(".media-tabs-wrap").tabs();
-    
-    var _tabID = jQuery.getUrlVar('tab_id');
-    
-    if(typeof _tabID != 'undefined'){
-      _tabID = _tabID - 1; //converts the 1,2,3,etc to 0,1,2,etc
-      magic_jscript.initialize_tab(_tabID);
-    }else{
-      _tabID = 0;
-    };
+  var _tabID = jQuery.getUrlVar('tab_id');
+  
+  if(typeof _tabID != 'undefined'){
+    _tabID = _tabID - 1; //converts the 1,2,3,etc to 0,1,2,etc
+    magic_jscript.initialize_tab(_tabID);
+  }else{
+    _tabID = 0;
+  };
 
-  });// end doc.ready()
-  -->
-  var magic_jscript = {
-    initialize_tab: function(_tabID){
-      var tabs = $('ul.media-tabs li');
+});// end doc.ready()
+-->
 
-      console.log($(tabs[_tabID]).children('a'));
-      $($('ul.media-tabs li')[_tabID]).children().trigger('click');
-    }    
-  }// end jed_script
+/*
+* Start custom code
+* - require jQuery
+*/
 
-  </script>
+var magic_jscript = {
+  initialize_tab: function(_tabID){
+    var tabs = $('ul.media-tabs li');
+
+    console.log($(tabs[_tabID]).children('a'));
+    $($('ul.media-tabs li')[_tabID]).children().children().trigger('click');
+  }    
+}// end jed_script
+
+</script>
 </body>

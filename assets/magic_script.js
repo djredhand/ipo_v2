@@ -25,9 +25,10 @@ var magic_jscript = {
   initialize_tab: function(_tabID){
 
     magic_jscript._pos = $($('ul.ipv2 li')[_tabID]).position().left
-    console.log(magic_jscript._pos);
     var tabs = $('ul.magic-tabs li');
-    tabs.addClass('ipo_v2_active')
+    $('.magic-pane').css({display:'none'});
+    $($('.magic-pane')[_tabID]).css({display:'block'})
+    tabs.addClass('ipo_v2_active');
     $($('ul.magic-tabs li')[_tabID])
       .children().trigger('click');
     $('#ipv_arrow').css({
@@ -55,7 +56,9 @@ var magic_jscript = {
   },
   set_tab:function(){
      $('ul.ipv2 li').click(function(){
-      console.log($(this).position().left);
+      show_index = $(this).index()
+      $('.magic-pane').css({display:'none'});
+      $($('.magic-pane')[show_index]).css({display:'block'})
         magic_jscript._pos = $(this).position().left;
         $('ul.ipv2 li').each(function(){
           $(this).removeClass('ipo_v2_active');

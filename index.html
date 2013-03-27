@@ -1,70 +1,16 @@
 <head>
-
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="get_url_vars.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="ipo_v2.css">
 </head>
-<style type="text/css">
-.media-tabs-wrap.ipv2{
-  width: 556px;
-}
-.ipv2 ul{
-  list-style: none;
-  background:url('images/dotted_line.png');
-  background-repeat:no-repeat;
-  background-position:bottom; 
-  margin: 0;
-  padding: 0 0 20px 0;
-
-}
-.ipv2 ul li{
-  display: inline-block;
-  width: 126px;
-  height:123px;
-  padding: 0 13px 0 0;
-}
-.ipv2 ul li a{ 
-  color: #fff;
-text-decoration: none;
-font-size: 36px;
-line-height: 30px;
-font-family: Georgia, 'Times New Roman', Times, serif;
-}
-.ipv2 ul li a span{
-  padding: 10px;
-}
-#ipv_arrow{
-  margin:-10px 0 0 35px;
-}
-.ipv2 ul li.ipv2_tab1{
-  background: url('images/tab1.png') no-repeat;
-
-}
-.ipv2 ul li.ipv2_tab1 a{
-  color:#a32020;
-}
-.ipv2 ul li.ipv2_tab2{
-  background: url('images/tab2.png') no-repeat;
-}
-.ipv2 ul li.ipv2_tab3{
-  background: url('images/tab3.png') no-repeat;
-}
-.ipv2 ul li.ipv2_tab4{
-  background: url('images/tab4.png') no-repeat;
-  padding: 0px !important;
-}
-.ipv2_tab_wrap{
-  margin: 4px 0 0 19px;
-}
-</style>
 <body>
   <div class="media-tabs-wrap ipv2">
    <ul class="media-tabs ipv2">
-     <li class="ipv2_tab1"><div class="ipv2_tab_wrap"><a href="#tab-1">Tab title 1</a></div></li>
-     <li class="ipv2_tab2"><div class="ipv2_tab_wrap"><a href="#tab-2">Tab title 2</a></div></li>
-     <li class="ipv2_tab3"><div class="ipv2_tab_wrap"><a href="#tab-3">Tab title 3</a></div></li>
-     <li class="ipv2_tab4"><div class="ipv2_tab_wrap"><a href="#tab-4">Tab title 4</a></div></li>
+     <li class="ipv2_tab1"><a href="#tab-1">Choosing your market</a></li>
+     <li class="ipv2_tab2"><a href="#tab-2">Getting<br/>IPO ready</a></li>
+     <li class="ipv2_tab3"><a href="#tab-3">Executing your IPO</a></li>
+     <li class="ipv2_tab4"><a href="#tab-4">Being public</a></li>
    </ul>
    <div id="ipv_arrow"><img src="images/tab_arrow.png"/></div>
    <div id="tab-1" class="media-pane">
@@ -84,87 +30,5 @@ font-family: Georgia, 'Times New Roman', Times, serif;
      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu placerat erat. Sed scelerisque leo ut dui porttitor ac ultrices nibh pharetra.</p>
    </div>
   </div>
-
-
-<script> 
-<!-- 
-jQuery(document).ready(function($) {
-
-
-  jQuery(".media-tabs-wrap").tabs();
-  
-  var _tabID = jQuery.getUrlVar('tab_id');
-  
-  if(typeof _tabID != 'undefined'){
-    _tabID = _tabID - 1; //converts the 1,2,3,etc to 0,1,2,etc
-  }else{
-    _tabID = 0;
-  };
-  magic_jscript.initialize_tab(_tabID);
-    magic_jscript.tab_hover();
-    magic_jscript.set_tab();
-    magic_jscript.bind_click();
-});// end doc.ready()
--->
-
-/*
-* Start magic_jscript
-* - require jQuery
-*/
-
-var magic_jscript = {
-  //Global
-  _pos: '',
-
-  initialize_tab: function(_tabID){
-    magic_jscript._pos = $($('ul.ipv2 li')[_tabID]).position().left
-    var tabs = $('ul.media-tabs li');
-    $($('ul.media-tabs li')[_tabID])
-      .children().children().trigger('click');
-    $('#ipv_arrow').css({
-      marginLeft: magic_jscript._pos + 20
-    })
-    
-  },
-  tab_hover: function(){
-
-    var lpos;
-    var offset = 30;
-    $('ul.ipv2 li').mouseenter(function(){
-      lpos = jQuery(this).position().left
-      $('#ipv_arrow').animate({
-        marginLeft:lpos + offset
-      },200);   
-    })//end mouseenter
-
-    $('ul.ipv2').mouseleave(function(){
-      if(magic_jscript._pos !== lpos){
-        $('#ipv_arrow').animate({
-          marginLeft:magic_jscript._pos + offset
-        }, 200);
-      }
-    })//endmouseleave
-  },
-  bind_click: function(){
-    var current;
-    $('.ipv2 ul li').click(function(){
-      current = $(this).index();
-      
-    })
-    $($('ul.media-tabs li')[current])
-      .children().children().trigger('click');
-  },
-
-  set_tab:function(){
-     $('ul.ipv2 li').click(function(){
-      magic_jscript._pos = $('.ui-tabs-active').position().left;
-        $('ul.ipv2 li').each(function(){
-          $(this).removeClass('ipo_v2_active');
-        })
-        $(this).toggleClass('ipo_v2_active');
-     })
-  } 
-}// end magic_script
-
-</script>
+  <script src="magic_script.js"></script>
 </body>

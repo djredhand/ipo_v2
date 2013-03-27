@@ -31,20 +31,28 @@
   <!-- 
  jQuery(document).ready(function($) {
 
+  
+    jQuery(".media-tabs-wrap").tabs();
+    
     var _tabID = jQuery.getUrlVar('tab_id');
+    
     if(typeof _tabID != 'undefined'){
       _tabID = _tabID - 1; //converts the 1,2,3,etc to 0,1,2,etc
-    } else _tabID = 0;
+      magic_jscript.initialize_tab(_tabID);
+    }else{
+      _tabID = 0;
+    };
 
-    function tab_ui(){
-      var a=1;
-    }
-
-
-    jQuery(".media-tabs-wrap").tabs();
-              
-  });
+  });// end doc.ready()
   -->
+  var magic_jscript = {
+    initialize_tab: function(_tabID){
+      var tabs = $('ul.media-tabs li');
+
+      console.log($(tabs[_tabID]).children('a'));
+      $($('ul.media-tabs li')[_tabID]).children().trigger('click');
+    }    
+  }// end jed_script
 
   </script>
 </body>

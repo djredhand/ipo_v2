@@ -1,7 +1,7 @@
 .magic-tabs-wrap.ipv2{
   width: 556px;
 }
-ul.ipv2 {
+.ipv2 ul{
   list-style: none;
   background:url('images/dotted_line.png');
   background-repeat:no-repeat;
@@ -11,13 +11,13 @@ ul.ipv2 {
   height: 123px;
   clear: left;
 }
-ul.ipv2  li{
+.ipv2 ul li{
   float:left;
   width: 126px;
   height:123px;
   padding: 0 13px 0 0;
 }
-ul.ipv2 li a{ 
+.ipv2 ul li a{ 
 color: #fff;
 text-decoration: none;
 font-size: 19px;
@@ -29,26 +29,26 @@ display: block;
 padding: 31px 0 0 19px;
 height: 88px;
 }
-ul.ipv2 li a span{
+.ipv2 ul li a span{
   padding: 10px;
 }
 #ipv_arrow{
   margin:-10px 0 0 35px;
 }
-ul.ipv2  li.ipv2_tab1{
+.ipv2 ul li.ipv2_tab1{
   background: url('images/tab1.png') no-repeat;
 
 }
-ul.ipv2  li.ipv2_tab1 a{
+.ipv2 ul li.ipv2_tab1 a{
   color:#a32020;
 }
-ul.ipv2 li.ipv2_tab2{
+.ipv2 ul li.ipv2_tab2{
   background: url('images/tab2.png') no-repeat;
 }
-ul.ipv2 li.ipv2_tab3{
+.ipv2 ul li.ipv2_tab3{
   background: url('images/tab3.png') no-repeat;
 }
-ul.ipv2 li.ipv2_tab4{
+.ipv2 ul li.ipv2_tab4{
   background: url('images/tab4.png') no-repeat;
   padding: 0px !important;
 }

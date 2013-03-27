@@ -20,10 +20,14 @@ jQuery(document).ready(function($) {
 var magic_jscript = {
   //Global
   _pos: '',
+  lpos:'',
 
   initialize_tab: function(_tabID){
+
     magic_jscript._pos = $($('ul.ipv2 li')[_tabID]).position().left
+    console.log(magic_jscript._pos);
     var tabs = $('ul.magic-tabs li');
+    tabs.addClass('ipo_v2_active')
     $($('ul.magic-tabs li')[_tabID])
       .children().trigger('click');
     $('#ipv_arrow').css({
@@ -35,14 +39,14 @@ var magic_jscript = {
     var lpos;
     var offset = 30;
     $('ul.ipv2 li').mouseenter(function(){
-      lpos = jQuery(this).position().left
+      magic_jscript.lpos = jQuery(this).position().left
       $('#ipv_arrow').animate({
-        marginLeft:lpos + offset
+        marginLeft:magic_jscript.lpos + offset
       },200);   
     })//end mouseenter
 
     $('ul.ipv2').mouseleave(function(){
-      if(magic_jscript._pos !== lpos){
+      if(magic_jscript._pos !== magic_jscript.lpos){
         $('#ipv_arrow').animate({
           marginLeft:magic_jscript._pos + offset
         }, 200);
@@ -51,12 +55,15 @@ var magic_jscript = {
   },
   set_tab:function(){
      $('ul.ipv2 li').click(function(){
-        magic_jscript._pos = $('.ui-tabs-active').position().left;
+      console.log($(this).position().left);
+        magic_jscript._pos = $(this).position().left;
         $('ul.ipv2 li').each(function(){
           $(this).removeClass('ipo_v2_active');
         })
         $(this).toggleClass('ipo_v2_active');
-        lpos = jQuery(this).position().left
+        $('#ipv_arrow').css({
+        marginLeft: 30 + $(this).position().left
+      },200);
      })
   } 
 }// end magic_script

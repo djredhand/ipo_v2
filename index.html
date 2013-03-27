@@ -97,27 +97,72 @@ jQuery(document).ready(function($) {
   
   if(typeof _tabID != 'undefined'){
     _tabID = _tabID - 1; //converts the 1,2,3,etc to 0,1,2,etc
-    magic_jscript.initialize_tab(_tabID);
   }else{
     _tabID = 0;
   };
-
+  magic_jscript.initialize_tab(_tabID);
+    magic_jscript.tab_hover();
+    magic_jscript.set_tab();
+    magic_jscript.bind_click();
 });// end doc.ready()
 -->
 
 /*
-* Start custom code
+* Start magic_jscript
 * - require jQuery
 */
 
 var magic_jscript = {
+  //Global
+  _pos: '',
+
   initialize_tab: function(_tabID){
     var tabs = $('ul.media-tabs li');
+    $($('ul.media-tabs li')[_tabID])
+      .children().children().trigger('click');
+    $('#ipv_arrow').css({
+      marginLeft: $($('ul.ipv2 li')[_tabID]).position().left + 20
+    })
+  },
+  tab_hover: function(){
 
-    console.log($(tabs[_tabID]).children('a'));
-    $($('ul.media-tabs li')[_tabID]).children().children().trigger('click');
-  }    
-}// end jed_script
+    var lpos;
+    var offset = 30;
+    $('ul.ipv2 li').mouseenter(function(){
+      lpos = jQuery(this).position().left
+      $('#ipv_arrow').animate({
+        marginLeft:lpos + offset
+      },200);   
+    })//end mouseenter
+
+    $('ul.ipv2').mouseleave(function(){
+      if(magic_jscript._pos !== lpos){
+        $('#ipv_arrow').animate({
+          marginLeft:magic_jscript._pos + offset
+        }, 200);
+      }
+    })//endmouseleave
+  },
+  bind_click: function(){
+    var current;
+    $('.ipv2 ul li').click(function(){
+      current = $(this).index();
+      
+    })
+    $($('ul.media-tabs li')[current])
+      .children().children().trigger('click');
+  },
+
+  set_tab:function(){
+     $('ul.ipv2 li').click(function(){
+      magic_jscript._pos = $('.ui-tabs-active').position().left;
+        $('ul.ipv2 li').each(function(){
+          $(this).removeClass('ipo_v2_active');
+        })
+        $(this).toggleClass('ipo_v2_active');
+     })
+  } 
+}// end magic_script
 
 </script>
 </body>

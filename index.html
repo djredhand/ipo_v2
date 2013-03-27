@@ -1,0 +1,50 @@
+<head>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="get_url_vars.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+</head>
+<body>
+  <div class="media-tabs-wrap">
+   <ul class="media-tabs">
+     <li><a href="#tab-1">Tab title 1</a></li>
+     <li><a href="#tab-2">Tab title 2</a></li>
+     <li><a href="#tab-3">Tab title 3</a></li>
+   </ul>
+   <div id="tab-1" class="media-pane">
+     <p><strong>Content pane 1</strong></p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut orci metus, a pulvinar neque. Ut ut orci risus, at feugiat sapien. Duis aliquet, nisi at scelerisque rhoncus, ipsum libero eleifend est, id posuere neque nibh id augue. Sed ut nisl erat, ac vehicula elit.</p>
+   </div>
+   <div id="tab-2" class="media-pane">
+     <p><strong>Content pane 2</strong></p>
+     <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris diam dui, adipiscing sed imperdiet quis, iaculis at velit. Sed turpis felis, blandit eu sollicitudin sit amet, egestas ut est.</p>
+   </div>
+   <div id="tab-3" class="media-pane">
+     <p><strong>Content pane 3</strong></p>
+     <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu placerat erat. Sed scelerisque leo ut dui porttitor ac ultrices nibh pharetra.</p>
+   </div>
+  </div>
+
+
+  <script> 
+  <!-- 
+ jQuery(document).ready(function($) {
+
+    var _tabID = jQuery.getUrlVar('tab_id');
+    if(typeof _tabID != 'undefined'){
+      _tabID = _tabID - 1; //converts the 1,2,3,etc to 0,1,2,etc
+    } else _tabID = 0;
+
+    function tab_ui(){
+      var a=1;
+    }
+
+
+    jQuery(".media-tabs-wrap").tabs();
+              
+  });
+  -->
+
+  </script>
+</body>

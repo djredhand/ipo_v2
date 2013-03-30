@@ -31,7 +31,7 @@ var magic_jscript = {
     $($('ul.magic-tabs li')[_tabID]).addClass('ipo_v2_active');
     $($('ul.magic-tabs li')[_tabID])
       .children().trigger('click');
-    $('#ipv_arrow').css({
+    $('#ipv_arrow').stop().animate({
       marginLeft: magic_jscript._pos + 20
     })
     $($($('.magic-pane')[_tabID]).children('.media-tabs')
@@ -42,16 +42,19 @@ var magic_jscript = {
     var offset = 30;
     $('ul.ipv2 li').mouseenter(function(){
       magic_jscript.lpos = jQuery(this).position().left
-      $('#ipv_arrow').animate({
+      $('#ipv_arrow').stop().animate({
         marginLeft:magic_jscript.lpos + offset
-      },200);   
+      },500, function(){
+			magic_jscript.mouse_leave(offset);
+		});   
     })//end mouseenter
-
-    $('ul.ipv2').mouseleave(function(){
+  },
+  mouse_leave: function(offset){
+	$('ul.ipv2').mouseleave(function(){
       if(magic_jscript._pos !== magic_jscript.lpos){
-        $('#ipv_arrow').animate({
+        $('#ipv_arrow').stop().animate({
           marginLeft:magic_jscript._pos + offset
-        }, 200);
+        }, {queue:true},{duration:100});
       }
     })//endmouseleave
   },
@@ -68,9 +71,9 @@ var magic_jscript = {
           $(this).removeClass('ipo_v2_active');
         })
         $(this).toggleClass('ipo_v2_active');
-        $('#ipv_arrow').css({
+        $('#ipv_arrow').animate({
         marginLeft: 30 + $(this).position().left
-      },200);
+      },{queue:true},{duration:100});
      })
   } 
 }// end magic_script
